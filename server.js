@@ -12,14 +12,14 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// Serve add-patient.html
+app.get('/add-patient.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'add-patient.html'));
+});
+
 // Serve patient detail page
 app.get('/patient.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'patient.html'));
-});
-
-// Serve edit diagnostic page
-app.get('/edit-diagnostic.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'edit-diagnostic.html'));
 });
 
 // Endpoint to save patient data

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Patient</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <h1>Add Patient</h1>
+    <form id="patientForm">
+        <input type="text" id="patientName" placeholder="First Name" required>
+        <input type="text" id="patientLastName" placeholder="Last Name" required>
+        <input type="email" id="patientEmail" placeholder="Email" required>
+        <input type="date" id="patientDOB" placeholder="Date of Birth" required>
+        <input type="text" id="patientContact" placeholder="Contact Information">
+        <textarea id="diagnostic" placeholder="Diagnostic" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+    <button onclick="window.location.href='index.html'">Back to Home</button>
+</body>
+</html>

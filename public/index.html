@@ -9,17 +9,8 @@
     <script src="app.js" defer></script>
 </head>
 <body>
-    <h1>Register Patient</h1>
-    <form id="patientForm">
-        <input type="text" id="patientName" placeholder="First Name" required>
-        <input type="text" id="patientLastName" placeholder="Last Name" required>
-        <input type="email" id="patientEmail" placeholder="Email" required>
-        <input type="date" id="patientDOB" placeholder="Date of Birth" required>
-        <input type="text" id="patientContact" placeholder="Contact Information">
-        <textarea id="diagnostic" placeholder="Diagnostic" required></textarea>
-        <button type="submit">Submit</button>
-    </form>
-
+    <h1>Patient Management</h1>
+    <button onclick="window.location.href='add-patient.html'">Add Patient</button>
     <h2>Patient List</h2>
     <div class="patient-list" id="patientList"></div>
 </body>
