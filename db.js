@@ -5,10 +5,10 @@ const connectToDatabase = async () => {
   let connection;
   await retry(async () => {
     connection = mysql.createConnection({
-      host: process.env.DB_HOST || 'localhost',   // MySQL host
+      host: process.env.DB_HOST || 'db',   // MySQL host
       user: process.env.DB_USER || 'root',        // MySQL user
-      password: process.env.DB_PASSWORD || '',    // MySQL password
-      database: process.env.DB_NAME || 'mydatabase' // MySQL database name
+      password: process.env.DB_PASSWORD || 'test',    // MySQL password
+      database: process.env.DB_NAME || 'openingDayAppDb' // MySQL database name
     });
 
     connection.connect((err) => {
