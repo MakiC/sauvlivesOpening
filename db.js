@@ -1,28 +1,24 @@
-const mysql = require('mysql2');
-const retry = require('async-retry');
+const mysql = require('mysql');
+const url = require('url');
 
-const connectToDatabase = async () => {
-  let connection;
-  await retry(async () => {
-    connection = mysql.createConnection({
-      host: process.env.DB_HOST || 'db',   // MySQL host
-      user: process.env.DB_USER || 'root',        // MySQL user
-      password: process.env.DB_PASSWORD || 'test',    // MySQL password
-      database: process.env.DB_NAME || 'openingDayAppDb' // MySQL database name
-    });
+const dbUrl = process.env.JAWSDB_URL || 'mysql://root:test@localhost:3306/openingDayAppDb';
+const params = url.parse(dbUrl);
+const [username, password] = params.auth.split(':');
 
-    connection.connect((err) => {
-      if (err) {
-        console.error('Error connecting to the database:', err);
-        throw err;
-      }
-      console.log('Connected to the MySQL database.');
-    });
-  }, {
-    retries: 5,
-    minTimeout: 2000
-  });
-  return connection;
-};
+const connection = mysql.createConnection({
+  host: params.hostname,
+  port: params.port,
+  user: username,
+  password: password,
+  database: params.pathname.split('/')[1]
+});
 
-module.exports = connectToDatabase;
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to the database:', err);
+    return;
+  }
+  console.log('Connected to the MySQL database.');
+});
+
+module.exports = connection;
