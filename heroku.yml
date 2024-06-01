@@ -1,12 +1,12 @@
-setup:
-  docker: 
-    file: Dockerfile
-
 build:
   docker:
     web: Dockerfile
   config:
-    ENV_VAR_NAME: ENV_VAR_VALUE
+    NODE_ENV: development
+    DB_HOST: db  # Make sure these match your Docker Compose environment variables
+    DB_USER: root
+    DB_PASSWORD: test
+    DB_NAME: openingDayAppDb
 
 run:
   web: docker-compose up
