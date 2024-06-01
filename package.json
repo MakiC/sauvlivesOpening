@@ -1,9 +1,10 @@
 {
   "name": "hospital-pwa",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A progressive web app for hospital patient management",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,7 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
-    "mysql": "^2.18.1",
-    "mysql2": "^3.9.7"
+    "mysql2": "^3.9.7",
+	 "async-retry": "^1.3.1",
+    "body-parser": "^1.19.0"
   }
 }

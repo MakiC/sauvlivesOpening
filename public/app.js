@@ -63,8 +63,9 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('online', syncWithServer);
 
     function syncWithServer() {
-        let patients = JSON.parse(localStorage.getItem('patients')) || [];
-        if (patients.length > 0) {
+        let patientsInitial = JSON.parse(localStorage.getItem('patients')) || [];
+        if (patientsInitial.length > 0) {
+			let patients=Object.assign({},patientsInitial);
             patients.forEach(patient => {
                 saveToServer(patient);
             });
@@ -153,22 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Ensure viewPatient is globally accessible
     window.viewPatient = function (id) {
         // Fetch patient details from server and update cache
-        fetch(`/api/patient/${id}`)
-            .then(response => response.json())
-            .then(patient => {
-                console.log('Fetched patient:', patient);
-                caches.open(CACHE_NAME)
-                    .then(cache => {
-                        cache.delete(`/api/patient/${id}`).then(() => {
-                            cache.put(`/api/patient/${id}`, new Response(JSON.stringify(patient)));
-                            window.location.href = `/patient.html?id=${id}`;
-                        });
-                    });
-            })
-            .catch(error => {
-                console.error('Error fetching patient:', error);
-                window.location.href = `/patient.html?id=${id}`; // Fallback to load patient.html
-            });
+			window.location.href = `/patient.html?id=${id}`;
     };
 
     function deleteCacheEntry(url) {
