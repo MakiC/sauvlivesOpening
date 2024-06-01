@@ -1,0 +1,12 @@
+setup:
+  docker: 
+    file: Dockerfile
+
+build:
+  docker:
+    web: Dockerfile
+  config:
+    ENV_VAR_NAME: ENV_VAR_VALUE
+
+run:
+  web: docker-compose up
